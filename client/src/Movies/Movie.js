@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState();
+  console.log(props);
 
   const {id} = useParams();
 
@@ -15,6 +16,7 @@ const Movie = (props) => {
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
           setMovie(response.data);
+          console.log(response);
         })
         .catch(error => {
           console.error(error);
@@ -36,12 +38,12 @@ const Movie = (props) => {
   return (
     <div className="save-wrapper">
       <div className="movie-card">
-        <h2>{id.title}</h2>
+        <h2>{title}</h2>
         <div className="movie-director">
-          Director: <em>{id.director}</em>
+          Director: <em>{director}</em>
         </div>
         <div className="movie-metascore">
-          Metascore: <strong>{id.metascore}</strong>
+          Metascore: <strong>{metascore}</strong>
         </div>
         <h3>Actors</h3>
 
